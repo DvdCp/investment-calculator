@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export const SavingsForm = () => {
+export const SavingsForm = (props) => {
   const [userInput, setUserInput] = useState({
     'current-savings': 0,
     'yearly-contribution': 0,
@@ -18,42 +18,21 @@ export const SavingsForm = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
+    props.onCalculate(userInput);
+
     console.log(userInput);
   };
 
   const resetHandler = (event) => {
     event.preventDefault();
 
-    setUserInput((prevState) => ({
+    setUserInput(() => ({
       'current-savings': 0,
       'yearly-contribution': 0,
       'expected-return': 0,
       duration: 0
     }));
   };
-
-  // const calculateHandler = (event) => {
-  //   // Preventing browser to submit and refresh the page
-  //   event.preventDefault();
-
-  //   const yearlyData = []; // per-year results
-
-  //   // The below code calculates yearly results (total savings, interest etc)
-  //   for (let i = 0; i < userInput['duration']; i++) {
-  //     const yearlyInterest = userInput['current-savings'] * userInput['expected-return'];
-  //     // currentSavings += yearlyInterest + yearlyContribution;
-  //     setCurrentSaving((prevState) => prevState + yearlyInterest + yearlyContribution);
-  //     yearlyData.push({
-  //       year: i + 1,
-  //       yearlyInterest,
-  //       savingsEndOfYear: currentSavings,
-  //       yearlyContribution
-  //     });
-  //   }
-
-  //   console.log(yearlyData);
-  //   // do something with yearlyData ...
-  // };
 
   return (
     <div>

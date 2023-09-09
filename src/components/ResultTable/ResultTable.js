@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const ResultTable = () => {
+export const ResultTable = (props) => {
   return (
     <div>
       <table className="result">
@@ -21,6 +21,22 @@ export const ResultTable = () => {
             <td>TOTAL INTEREST GAINED</td>
             <td>TOTAL INVESTED CAPITAL</td>
           </tr>
+
+          {props.result.map((yearStats) => (
+            <tr key={yearStats.id}>
+              <td>{yearStats.year.toFixed(2)}</td>
+              <td>{yearStats.savingsEndOfYear.toFixed(2)}</td>
+              <td>{yearStats.yearlyInterest.toFixed(2)}</td>
+              <td>
+                {(
+                  yearStats.savingsEndOfYear -
+                  props.initialInvestment -
+                  yearStats.yearlyContribution * yearStats.year
+                ).toFixed(2)}
+              </td>
+              <td>{yearStats.totalInvestment}</td>
+            </tr>
+          ))}
         </tbody>
       </table>
     </div>
