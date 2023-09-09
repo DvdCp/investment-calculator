@@ -19,8 +19,6 @@ export const SavingsForm = (props) => {
     event.preventDefault();
 
     props.onCalculate(userInput);
-
-    console.log(userInput);
   };
 
   const resetHandler = (event) => {

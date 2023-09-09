@@ -24,17 +24,13 @@ export const ResultTable = (props) => {
 
           {props.result.map((yearStats) => (
             <tr key={yearStats.id}>
-              <td>{yearStats.year.toFixed(2)}</td>
-              <td>{yearStats.savingsEndOfYear.toFixed(2)}</td>
-              <td>{yearStats.yearlyInterest.toFixed(2)}</td>
+              <td>{yearStats.year}</td>
+              <td>{yearStats.savingsEndOfYear}</td>
+              <td>{yearStats.yearlyInterest}</td>
               <td>
-                {(
-                  yearStats.savingsEndOfYear -
-                  props.initialInvestment -
-                  yearStats.yearlyContribution * yearStats.year
-                ).toFixed(2)}
+                {yearStats.savingsEndOfYear - props.initialInvestment - yearStats.yearlyContribution * yearStats.year}
               </td>
-              <td>{yearStats.totalInvestment}</td>
+              <td>{props.initialInvestment + yearStats.yearlyContribution * yearStats.year}</td>
             </tr>
           ))}
         </tbody>

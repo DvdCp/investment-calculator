@@ -8,14 +8,16 @@ function App() {
   const [initialInvestment, setInitialInvestment] = useState();
 
   const calculateHandler = (userInput) => {
+    console.log(userInput);
+
     const yearlyData = []; // per-year results
 
-    let currentSavings = parseInt(userInput['current-savings']);
+    let currentSavings = +userInput['current-savings'];
     setInitialInvestment(currentSavings);
 
-    const expectedReturn = parseInt(userInput['expected-return']) / 100; // as percentage
-    const yearlyContribution = parseInt(userInput['yearly-contribution']);
-    const duration = parseInt(userInput['duration']);
+    const expectedReturn = +userInput['expected-return'] / 100; // as percentage
+    const yearlyContribution = +userInput['yearly-contribution'];
+    const duration = +userInput['duration'];
 
     let totalInvestment = 0;
     // The below code calculates yearly results (total savings, interest etc)
