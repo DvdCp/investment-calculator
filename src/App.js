@@ -42,7 +42,7 @@ function App() {
       <Header />
       <SavingsForm onCalculate={calculateHandler} />
 
-      {!result && <p className={styles.noInvestement}>Nothing</p>}
+      {!result && <p className={styles.noInvestement}>There are no investments</p>}
       {result && <ResultTable result={result} initialInvestment={initialInvestment} />}
     </div>
   );
