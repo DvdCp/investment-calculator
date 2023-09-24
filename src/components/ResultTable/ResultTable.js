@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from './ResultTable.module.css';
 
 const formatter = new Intl.NumberFormat('it-IT', {
   style: 'currency',
@@ -10,7 +11,7 @@ const formatter = new Intl.NumberFormat('it-IT', {
 export const ResultTable = (props) => {
   return (
     <div>
-      <table className="result">
+      <table className={styles.result}>
         <thead>
           <tr>
             <th>Year</th>
@@ -31,7 +32,7 @@ export const ResultTable = (props) => {
 
           {props.result.map((yearStats) => (
             <tr key={yearStats.id}>
-              <td>{yearStats.year.toFixed(2)}</td>
+              <td>{yearStats.year}</td>
               <td>{formatter.format(yearStats.savingsEndOfYear)}</td>
               <td>{formatter.format(yearStats.yearlyInterest)}</td>
               <td>
